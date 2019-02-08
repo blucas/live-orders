@@ -22,13 +22,14 @@ podTemplate(label: label,
             stage('Build') {
 
                 container('jdk-8') {
-                    sh 'gradlew build'
+                    sh 'apk add --no-cache bash'
+                    sh './gradlew build'
                 }
             }
 
             stage('Test') {
                 container('jdk-8') {
-                    sh 'gradlew test'
+                    sh './gradlew test'
                 }
             }
 ///        }
